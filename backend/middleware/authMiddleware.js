@@ -1,7 +1,8 @@
-const jsonwebtoken = require('jsonwebtoken')
-const User = require('../models/User')
+import jsonwebtoken from 'jsonwebtoken';
+import User from '../models/User.js';
 
-exports.protect  = async (req, res, next) => {
+
+const protect  = async (req, res, next) => {
     let token
     if(req.cookies.token){
         token = req.cookies.token
@@ -9,7 +10,7 @@ exports.protect  = async (req, res, next) => {
     
 
     try{
-        let decoded = jwt.verify(token,process.env.JWT_SECRET_KEY)
+        let decoded = jwt.verify(token,process.env.JWT_SECRET)
     req.user = await User.findById(decoded.id).select('-password')
     next()
     }
@@ -21,3 +22,5 @@ else{
     res.status(400).json({message:"Token Doest Not exist"},err)
 }
 }
+
+export default protect;

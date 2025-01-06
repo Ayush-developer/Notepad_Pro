@@ -1,12 +1,12 @@
-const bcrypt = require('bcrypt');
-import jwt from "jsonwebtoken";
-const User = require('../models/User')
+import bcrypt from 'bcrypt';
+import jwt from 'jsonwebtoken';
+import User from '../models/User.js';
 
 const generateToken =(id) => {
     return jwt.sign({ id }, process.env.JWT_SECRET, { expiresIn: '1d' });
 }
 
-exports.register = async (req,res)=>{
+export const register = async (req,res)=>{
 
 
     const {email,password} = req.body;
@@ -40,7 +40,9 @@ exports.register = async (req,res)=>{
 }
 
 
-exports.login = async (req, res) => {
+export const login = async (req, res) => {
+
+
     const {email, password} = req.body
     if(!email || !password) {
         res.status(400).json({message:"Fill All Fields"})
@@ -64,5 +66,10 @@ exports.login = async (req, res) => {
     catch(err) {
         res.status(500).json({message:"Server Error",err})
     }
+}
+
+export const logout = async (req,res)=>{
+       res.clearCookie('token')
+       res.status(200).json({message:"Logged out successfully"})
 }
 

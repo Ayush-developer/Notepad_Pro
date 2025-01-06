@@ -1,6 +1,6 @@
-const note = require('../models/Note')
+import note from '../models/Note.js'
 
-exports.getNote = async (req,res)=>{
+export const getNote = async (req,res)=>{
 
     try{
         const notes = await note.find({user:req.user._id})
@@ -12,7 +12,7 @@ exports.getNote = async (req,res)=>{
 
 }
 
-exports.create = async (req,res)=>{
+export const createNote = async (req,res)=>{
      try{
         const {title,content} = req.body
         if(!title || !content){

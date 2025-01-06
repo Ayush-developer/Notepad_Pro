@@ -1,10 +1,11 @@
-const express = require('express')
-const protect = require('../m')
-const {createNote,getNote} = require('../middleware/')
+import express from 'express';
+import protect from '../middleware/authMiddleware.js';
+import { createNote, getNote } from '../controllers/noteController.js';
 
-const router = express.router
 
-router.get('/yourNotes',protect,getNote)
-router.post('yourNotes',protect,createNote)
+const router = express.Router()
 
-module.exports = router
+router.get('/',protect,getNote)
+router.post('/',protect,createNote)
+
+export default router;
