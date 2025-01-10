@@ -1,4 +1,4 @@
-const API_URL = process.env.REACT_API_URL
+const API_URL = 'http://localhost:5000/api'
 
 export const login = async(credentials)=>{
       const response = await fetch(`${API_URL}/auth/login`,{
@@ -7,6 +7,7 @@ export const login = async(credentials)=>{
         body: JSON.stringify(credentials),
         credentials: 'include'
       });
+      console.log(response.json());
       if(!response.ok){
         throw new Error('LoginFailed')
       }
@@ -19,10 +20,11 @@ export const signup = async (data) => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data),
     });
+    console.log(response.json());
     if (!response.ok) {
         throw new Error('Signup failed');
     }
-    return response.json();
+    return await response.json();
 };
 
 export const logout= async(credentials) => {

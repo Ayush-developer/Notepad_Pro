@@ -7,7 +7,9 @@ const SignupPage = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            await signup(credentials); // Call the `register` service
+            console.log("Hua kya")
+            await signup(credentials); 
+            console.log("Nai hua")
             alert('Signup successful! You can now log in.');
         } catch (err) {
             alert('Signup failed. Please try again.');
