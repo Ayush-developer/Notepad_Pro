@@ -66,7 +66,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Contact
 
-For any inquiries, please reach out to [Your Name](mailto:your.email@example.com).
+For any inquiries, please reach out to [Ayush Deb](mailto:debayush2002@gmail.com).
 Instructions:
 Replace placeholders (like [Specify framework or library]) with actual information relevant to your project.
 Ensure that the contact information is accurate.
